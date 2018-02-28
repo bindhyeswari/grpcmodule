@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package com.netflix.deliverylist;
+
+import "com/netflix/proto/options/docs/api-docs.proto";
+import "com/netflix/proto/options/server.proto";
+
+option java_multiple_files = true;
+option java_package = "com.netflix.deliverylist.protogen";
+option java_outer_classname = "DeliverylistProto";
+
+option (com.netflix.proto.options.server).name = "Deliverylist";
+
+enum Status {
+    DRAFT = 0;
+    PUBLISH = 1;
+}
+
+// The greeting service definition.
+service DeliverylistService {
+    option (com.netflix.proto.options.docs.service) = {
+     description: "Delivery list service tag description"
+  };
+
+    rpc DeliveryList (DeliveryListRequest) returns (DeliveryListResponse) {
+        option (com.netflix.proto.options.docs.operation) = {
+        description: "Detailed operation description with examples. Can be `markdown`."
+        summary: "Brief method description"
+     };
+    }
+
+    rpc DeliveryLists (DeliveryListsRequest) returns (DeliveryListsResponse) {
+        option (com.netflix.proto.options.docs.operation) = {
+        description: "Detailed operation description with examples. Can be `markdown`."
+        summary: "Brief method description"
+     };
+    }
+
+}
+
+message DeliveryListRequest {
+    DeliveryListQuery query = 1;
+}
+
+message DeliveryListsRequest {
+    repeated DeliveryListQuery queries = 1;
+    bool retrieveAll = 2;
+}
+
+message DeliveryListResponse {
+    DeliveryList deliveryList = 1;
+}
+
+message DeliveryListsResponse {
+    repeated DeliveryListResponse DeliveryListsResponse = 1 [(com.netflix.proto.options.docs.field) = { description: "Delivery Lists"}];
+}
+
+message DeliveryListQuery {
+    string id = 1 [(com.netflix.proto.options.docs.field) = { description: "Id"}];
+    string name = 2 [(com.netflix.proto.options.docs.field) = { description: "Name"}];
+    int32 majorVersion = 3 [(com.netflix.proto.options.docs.field) = { description: "Major Version"}];
+    int32 minorVersion = 4 [(com.netflix.proto.options.docs.field) = { description: "Minor Version"}];
+}
+
+message DeliveryList {
+    string id = 1 [(com.netflix.proto.options.docs.field) = { description: "Id"}];
+    string name = 2 [(com.netflix.proto.options.docs.field) = { description: "Name"}];
+    int32 majorVersion = 3 [(com.netflix.proto.options.docs.field) = { description: "Major Version"}];
+    int32 minorVersion = 4 [(com.netflix.proto.options.docs.field) = { description: "Minor Version"}];
+}

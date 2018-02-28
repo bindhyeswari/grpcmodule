@@ -1,0 +1,17 @@
+{
+  "name": "mygrpctest",
+  "version": "0.0.1-rc8",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "metatron": "1.1.17",
+    "nflx-grpc": "1.8.0-dev"
+  }
+}
